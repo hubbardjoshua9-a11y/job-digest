@@ -1,0 +1,112 @@
+# ============================================================
+# CONTEXT LAYER — edit this file to tune what gets found.
+# No coding needed. Change the words, save, re-run.
+# ============================================================
+
+# How many days back to look. 1 = today only, 7 = past week.
+max_days_old: 30
+
+# Max results to pull per search query (Adzuna allows up to 50).
+results_per_page: 50
+
+# ------------------------------------------------------------
+# SEARCHES
+# Each search hits Adzuna once. Mix and match keywords/locations.
+# - what:     keywords (space-separated, all should appear)
+# - what_or:  match ANY of these words (broadens the search)
+# - where:    location. Use "remote" for WFH, or a place name.
+# - distance: km radius around `where` (ignored for "remote").
+# ------------------------------------------------------------
+searches:
+  # Australia-wide searches (rely on relevance + remote_keywords filter)
+  - what: graphic designer
+    what_or: canva adobe illustrator photoshop
+    where: Australia
+    distance: 0
+
+  - what: social media designer
+    what_or: canva content reels video
+    where: Australia
+    distance: 0
+
+  - what: digital marketing
+    what_or: designer creative content brand
+    where: Australia
+    distance: 0
+
+  - what: graphic designer
+    what_or: canva adobe marketing admin
+    where: Campbelltown NSW
+    distance: 25
+
+  - what: marketing coordinator
+    what_or: design canva social media content
+    where: Penrith NSW
+    distance: 20
+
+# ------------------------------------------------------------
+# CLASSIFICATION KEYWORDS
+# Used to tag each role as Remote/WFH or NSW 2570 area.
+# A role can be both (e.g. a hybrid Camden job).
+# ------------------------------------------------------------
+remote_keywords:
+  - remote
+  - work from home
+  - wfh
+  - hybrid
+  - flexible
+  - anywhere in australia
+  - work remotely
+
+local_keywords:
+  - camden
+  - campbelltown
+  - narellan
+  - macarthur
+  - penrith
+  - wollondilly
+  - "2570"
+  - south west sydney
+  - sydney south west
+
+# ------------------------------------------------------------
+# RELEVANCE FILTER
+# A role must contain at least one of these to be shown at all.
+# Trim or expand to make the digest tighter or wider.
+# ------------------------------------------------------------
+relevant_keywords:
+  - graphic
+  - design
+  - canva
+  - adobe
+  - illustrator
+  - photoshop
+  - indesign
+  - digital marketing
+  - seo
+  - social media
+  - content
+  - video
+  - reels
+  - brand
+  - creative
+  - visual
+  - marketing
+  - communications
+
+# ------------------------------------------------------------
+# EXCLUDE FILTER
+# Roles containing any of these words are dropped.
+# Useful for filtering out senior/unrelated noise.
+# ------------------------------------------------------------
+exclude_keywords:
+  - senior architect
+  - structural
+  - registered nurse
+  - cleaner
+  - adelaide
+  - brisbane
+  - melbourne
+  - perth
+  - darwin
+  - hobart

@@ -1,0 +1,41 @@
+name: Daily Job Digest
+
+# Runs every day at 7:00 PM UTC (~6:00 AM Sydney AEST / 5:00 AM AEDT).
+# Adjust the cron if you want it earlier/later. You can also trigger
+# it manually from the GitHub "Actions" tab via "Run workflow".
+on:
+  schedule:
+    - cron: "0 19 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch jobs and build page
+        env:
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+        run: python run.py
+
+      - name: Commit updated page
+        run: |
+          git config user.name "job-digest-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add site/index.html memory/seen.json memory/latest.json
+          git commit -m "Daily digest: $(date -u +'%Y-%m-%d')" || echo "No changes to commit"
+          git push

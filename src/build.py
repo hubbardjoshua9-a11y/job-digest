@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 LATEST_PATH = ROOT / "memory" / "latest.json"
-OUT_PATH = ROOT / "site" / "index.html"
+OUT_PATH = ROOT / "docs" / "index.html"
 
 
 def esc(s):

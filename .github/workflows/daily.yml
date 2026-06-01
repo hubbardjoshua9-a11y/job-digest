@@ -36,6 +36,6 @@ jobs:
         run: |
           git config user.name "job-digest-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add site/index.html memory/seen.json memory/latest.json
+          git add docs/index.html memory/seen.json memory/latest.json
           git commit -m "Daily digest: $(date -u +'%Y-%m-%d')" || echo "No changes to commit"
           git push

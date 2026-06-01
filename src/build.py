@@ -172,7 +172,7 @@ body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 <div class="container">
   <div class="header">
     <h1>Daily job digest</h1>
-    <p>Updated {gen_str} · refreshed once a day</p>
+    <p>Last updated {gen_str}</p>
   </div>
 
   <div class="stats">

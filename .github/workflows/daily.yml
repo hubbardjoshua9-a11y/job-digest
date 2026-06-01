@@ -5,7 +5,9 @@ name: Daily Job Digest
 # it manually from the GitHub "Actions" tab via "Run workflow".
 on:
   schedule:
-    - cron: "0 19 * * *"
+    - cron: "0 22 * * *"   # 8AM AEST (UTC+10)
+    - cron: "0 2 * * *"    # 12PM AEST
+    - cron: "0 8 * * *"    # 6PM AEST
   workflow_dispatch:
 
 permissions:
